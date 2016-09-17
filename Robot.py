@@ -79,7 +79,27 @@ class Robot(object):
             self._writePot(0x00B9)  # writes 6V to LR
 
     def __del__(self):
-        """Stop the chair before destruction."""
-        # set both channels to 6V; this stops the chair
+        """Stop the chair before wiping Robot."""
+        # set both channels to 0; this stops the chair
         self.setLR(0)
         self.setFB(0)
+
+if __name__ == "__main__":
+    # do a little dance to prove it works
+    import time
+    darbot = Robot()
+    darbot.setFB(1)
+    time.sleep(3)
+    darbot.setFB(0)
+    time.sleep(3)
+    darbot.setFB(-1)
+    time.sleep(3)
+    darbot.setFB(0)
+    time.sleep(3)
+    darbot.setLR(1)
+    time.sleep(3)
+    darbot.setLR(0)
+    time.sleep(3)
+    darbot.setLR(-1)
+    time.sleep(3)
+    darbot.setLR(0)
