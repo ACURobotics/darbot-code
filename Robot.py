@@ -88,18 +88,23 @@ if __name__ == "__main__":
     # do a little dance to prove it works
     import time
     darbot = Robot()
-    darbot.setFB(1)
-    time.sleep(3)
-    darbot.setFB(0)
-    time.sleep(3)
-    darbot.setFB(-1)
-    time.sleep(3)
-    darbot.setFB(0)
-    time.sleep(3)
-    darbot.setLR(1)
-    time.sleep(3)
-    darbot.setLR(0)
-    time.sleep(3)
-    darbot.setLR(-1)
-    time.sleep(3)
-    darbot.setLR(0)
+
+    while True:
+        for val in range(1, 4):     # range(1, 4) == [1, 2, 3]
+            darbot.setFB(val)
+            time.sleep(2)
+            darbot.setFB(0)
+            time.sleep(2)
+            darbot.setFB(-val)
+            time.sleep(2)
+            darbot.setFB(0)
+            time.sleep(2)
+
+            darbot.setLR(val)
+            time.sleep(2)
+            darbot.setLR(0)
+            time.sleep(2)
+            darbot.setLR(-val)
+            time.sleep(2)
+            darbot.setLR(0)
+            time.sleep(2)
