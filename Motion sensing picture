@@ -15,6 +15,15 @@ with picamera.PiCamera() as camera:
     # Give the camera some time to adjust to conditions
     while True:
     if pir.motion_detected:
+        camera.start_preview()
         time.sleep(2)
-        camera.capture('myFace.jpg')
+        
+        a = 'Darbot_Picture'
+        b = '.jpeg'
+        c = 0
+        d = str(c)
+        c = c+1
+        ruby = a + b + d
+        
+        camera.capture(ruby)
         camera.stop_preview()
