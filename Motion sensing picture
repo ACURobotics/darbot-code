@@ -1,0 +1,29 @@
+from gpiozero import MotionSensor
+import time
+import picamera import Picamera
+
+pir = MotionSensor(4)
+
+with picamera.PiCamera() as camera:
+    camera.resolution = (1024, 768)
+    camera.start_preview()
+    
+    #camera.exposure_compensation = 2
+    #camera.exposure_mode = 'spotlight'
+    #camera.meter_mode = 'matrix'
+    #camera.image_effect = 'gpen'
+    # Give the camera some time to adjust to conditions
+    while True:
+    if pir.motion_detected:
+        camera.start_preview()
+        time.sleep(2)
+        
+        a = 'Darbot_Picture'
+        b = '.jpeg'
+        c = 0
+        d = str(c)
+        c = c+1
+        ruby = a + b + d
+        
+        camera.capture(ruby)
+        camera.stop_preview()
